@@ -11,6 +11,12 @@
     box-sizing: border-box;
     font-family: "Lato", sans-serif;
     transition: 0.3s linear;
+    list-style: none;
+    text-decoration: none;
+}
+
+body.barra-none {
+    overflow: hidden;
 }
 
 header {
@@ -24,16 +30,18 @@ header {
     height: 5.6rem;
     padding: 0 3rem;
     margin-bottom: 2.5rem;
+    background-color: white;
+
 
     & .navbar {
         right: 0;
         top: 0;
         z-index: 95;
         position: fixed;
-
         height: 100vh;
-        background-color: var(--palha);
+        background-color: white;
         display: none;
+        max-width: 50%;
 
     }
 
@@ -118,6 +126,7 @@ main {
     display: flex;
     flex-direction: column;
     row-gap: 3rem;
+
     & .section-padrao {
         display: flex;
         height: 100vh;
@@ -333,6 +342,7 @@ footer {
 
 @media (max-width:1024px) {
     header {
+        position: absolute;
 
         & .btns {
             display: none;
@@ -354,22 +364,55 @@ footer {
             flex-direction: column;
             cursor: pointer;
             z-index: 99;
+            background: none;
+        }
 
+        & .btn_hamburguer.active {
+            border-top-color: transparent;
+            position: relative;
+
+        }
+
+        & .btn_hamburguer.active::after {
+            position: absolute;
+            transform: rotate(-135deg);
+            width: 1.5rem;
+            top: 2px;
+        }
+
+        & .btn_hamburguer.active::before {
+
+            transform: rotate(135deg);
+            top: 2px;
+            width: 1.5rem;
         }
 
         & .btn_hamburguer::after,
         .btn_hamburguer::before {
             content: "";
-            border-top: 0.3rem solid black;
+            border-top: 0.3rem solid rgb(12, 12, 12);
             width: 2rem;
+            transition: 0.5s;
             margin-top: 4px;
 
         }
 
         & .navbar.active {
-            display: block;
+            display: flex;
             transition: 1s ease-in;
-            width: 400px;
+            width: 50%;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 7rem 2rem;
+
+            & ul {
+                display: flex;
+                flex-direction: column;
+                row-gap: 15px;
+            }
+
+
+
         }
 
 
@@ -380,10 +423,12 @@ footer {
     main {
         & .section-padrao {
             height: 120vh;
+
             & div {
                 & h2 {
                     font-size: 2rem;
                 }
+
                 & p {
                     font-size: 1.3rem;
                 }
@@ -393,6 +438,7 @@ footer {
                 height: 60%;
             }
         }
+
         & div {
             background-color: var(--darkGreen);
         }
@@ -410,12 +456,13 @@ footer {
         }
 
         & div {
-            
+
 
             & h2 {
                 margin-bottom: 1rem;
             }
-            & p{
+
+            & p {
                 font-size: 0.5rem;
             }
         }
@@ -426,8 +473,8 @@ footer {
 
 @media (max-width:769px) {
     main {
-        & .section-padrao{
-            
+        & .section-padrao {
+
             flex-direction: column;
 
             & img {
@@ -438,14 +485,16 @@ footer {
 
                 padding: 2rem;
                 width: 100%;
-                & h2{
+
+                & h2 {
                     font-size: 1.4rem;
                 }
+
                 & p {
                     font-size: 0.9rem;
                 }
 
-                
+
             }
         }
 
@@ -461,7 +510,8 @@ footer {
                     font-size: 1.4rem;
                     margin-bottom: 0.5rem;
                 }
-                & p{
+
+                & p {
                     font-size: 1rem;
                 }
             }
@@ -475,28 +525,29 @@ footer {
 
 }
 
-@media (max-width:480px){
-    main{
-        & .text{
+@media (max-width:480px) {
+    main {
+        & .text {
             padding: 1rem;
             font-size: 0.8rem;
         }
     }
-    footer{
 
-        & .links{
+    footer {
+
+        & .links {
             width: 100%;
             display: flex;
             flex-direction: column;
             text-align: center;
             gap: 5px;
 
-            & ul{
-                & li{
+            & ul {
+                & li {
                     margin-bottom: 4px;
                 }
             }
-            
+
         }
     }
 }
